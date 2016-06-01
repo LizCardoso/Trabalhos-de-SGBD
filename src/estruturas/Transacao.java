@@ -3,7 +3,6 @@ package estruturas;
 public class Transacao {
 	public int Id;
 	public String estado;
-<<<<<<< HEAD
 	public int TS;
 	public Item item;
 	
@@ -25,7 +24,6 @@ public class Transacao {
 	public void setItem(Item item) {
 		this.item = item;
 	}
-=======
 	
 	//
 	public Transacao( int id, Vertice v){
@@ -36,7 +34,6 @@ public class Transacao {
 	
 	
 	// 
->>>>>>> 2d3227466be2cc734abdaddce45ea28243f4f4f3
 	public int getId() {
 		return Id;
 	}
@@ -44,7 +41,6 @@ public class Transacao {
 	public String getEstado() {
 		return estado;
 	}
-<<<<<<< HEAD
 	
 	public int getTS() {
 		return TS;
@@ -53,8 +49,6 @@ public class Transacao {
 	public void setTS(int TS) {
 		this.TS = TS;
 	}
-=======
->>>>>>> 2d3227466be2cc734abdaddce45ea28243f4f4f3
 
 	public void setEstado(String estado) {
 		this.estado = estado;
