@@ -49,15 +49,22 @@ public static int operacoes(){
 			//criacao = 0, 
 			opcao, //opcao do menu principal
 			operacao, //recebe a operacao a ser realizada
+<<<<<<< HEAD
 			tranOpc,
 			TS = 0;
+=======
+			tranOpc;
+>>>>>>> 2d3227466be2cc734abdaddce45ea28243f4f4f3
 		
 		ArrayList<Transacao> transacoes = new ArrayList<Transacao>();
 		
 		Scanner opc = new Scanner(System.in);
 		
+<<<<<<< HEAD
 		
 		//grafo 
+=======
+>>>>>>> 2d3227466be2cc734abdaddce45ea28243f4f4f3
 		Vertice TR_Iniciada = new Vertice("TR_Iniciada");
 		Vertice Ativa = new Vertice("Ativa");
 		Vertice Processo_Cancelamento = new Vertice("Processo_Cancelamento");
@@ -75,7 +82,13 @@ public static int operacoes(){
 		Aresta TR_Finish1 = new Aresta(Processo_Cancelamento, TR_Finalizada);
 		Aresta TR_Finish2 = new Aresta(Efetivada, TR_Finalizada);
 
+<<<<<<< HEAD
 		//movimentando o grafo
+=======
+		
+	
+		
+>>>>>>> 2d3227466be2cc734abdaddce45ea28243f4f4f3
 		do{
 				listar(transacoes);
 				
@@ -83,7 +96,11 @@ public static int operacoes(){
 				switch(opcao){
 				
 				case 1:
+<<<<<<< HEAD
 					transacoes.add(new Transacao(transacoes.size()+1, TR_Iniciada, TS++));
+=======
+					transacoes.add(new Transacao(transacoes.size()+1, TR_Iniciada));
+>>>>>>> 2d3227466be2cc734abdaddce45ea28243f4f4f3
 					break;
 					
 				case 2:
