@@ -26,7 +26,6 @@ public static int menu(){
 	System.out.println("Movimentar uma transação: digite 2");
 	System.out.println("Sair: digite 3");
 	saida=opcMenu.nextInt();
-	opcMenu.close();
 	return saida;
 }
 
@@ -41,7 +40,6 @@ public static int operacoes(){
 	System.out.println("Commit digite 4");
 	System.out.println("Finalizar digite 5");
 	saida=opc.nextInt();
-	opc.close();
 	return saida;
 	
 }
@@ -54,11 +52,9 @@ public static int operacoes(){
 			tranOpc,
 			TS = 0;
 
-		String historia;
-		String[] comandos;
-		Scanner hist = new Scanner(System.in);
 		
 		ArrayList<Transacao> transacoes = new ArrayList<Transacao>();
+		
 		Scanner opc = new Scanner(System.in);
 		
 
@@ -82,17 +78,9 @@ public static int operacoes(){
 		Aresta TR_Finish2 = new Aresta(Efetivada, TR_Finalizada);
 
 
-		//testes para o trabalho 3
-		System.out.println("Entre a história a ser executada");
-		historia=hist.next();
-		comandos= historia.split("\\)");
-		
-		int indice;
-		indice = comandos[0].indexOf("("); //identifica a posição do caractere '(' no comando, para podermos encontrar as outras informações
-		System.out.println(comandos[0].charAt(indice+1)); //exibe o numero da transação a ser criada
-		
 		//movimentando o grafo
-		/*do{    //método utilizado no trabalho 2 
+		
+		do{
 				listar(transacoes);
 				
 				opcao = menu();
@@ -180,9 +168,7 @@ public static int operacoes(){
 				 break;
 				}
 				
-		}while(iteracao==0);*/
-		
-		
+		}while(iteracao==0);
 	}
 
 }
