@@ -2,29 +2,36 @@ package GerenciadorBloqueio;
 
 import java.util.ArrayList;
 
+import GerenciadorBloqueio.Lock;
+
 import estruturas.Item;
 import estruturas.Transacao;
 
 public class Lock_table {
 	
-	ArrayList<Lock> listBloqueio = new ArrayList<Lock>();
+	ArrayList<Lock> listBloqueio;
 	
 	
+	public Lock_table(){
+		listBloqueio = new ArrayList<Lock>();
+	}
 	//se existe esse bloqueio
 	public boolean verificaExistenciaExclusivaB(Item I){
 		boolean achou = false;
-		for(Lock t: listBloqueio)
-				if (I == t.getItem() && t.getTypeL() == "BE")
-					achou = true;
+		for(Lock t: listBloqueio){
+			if (I.getId().equals(t.getItem().getId()) && t.getTypeL().equals("BE"))
+				achou = true;
+		}
 		return achou;
 	
 	}
 	
 	public boolean verificaExistenciaCompartilhadaB(Item I){
 		boolean achou = false;
-		for(Lock t: listBloqueio)
-				if (I == t.getItem() && t.getTypeL() == "BC")
-					achou = true;
+		for(Lock t: listBloqueio){
+			if (I.getId().equals(t.getItem().getId()) && t.getTypeL().equals("BC"))
+				achou = true;				
+		}
 		return achou;
 	
 	}
@@ -49,6 +56,13 @@ public class Lock_table {
 		}
 	}
 	
+	public void listarB(){
+		System.out.println("\nBloqueioExistentes:\n");
+		 for(Lock t: this.listBloqueio){
+			 System.out.println("Item: "+ t.getItem().getId()+ "Transacao: "+ t.getT().Id + "Tipo: " + t.getTypeL());
+		 }
+		 System.out.println("---------------||---------------"); 
+	}
 	
 	
 }

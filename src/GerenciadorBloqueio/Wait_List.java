@@ -7,8 +7,11 @@ import estruturas.Transacao;
 
 public class Wait_List {
 	
-	public ArrayList<Lock> wait_list = new ArrayList<Lock>(); // lista do tipo fifo
+	public ArrayList<Lock> wait_list;// lista do tipo fifo
 	
+	public Wait_List(){
+		wait_list= new ArrayList<Lock>(); 
+	}
 	//se existe esse bloqueio na lista de espera
 	public boolean verificaExistencia(Item I, Transacao T , String typeL){
 		boolean achou = false;
@@ -39,4 +42,13 @@ public class Wait_List {
 		}
 	
 	}
+	
+	public void listarB(){
+		System.out.println("\nLista de Espera:\n");
+		 for(Lock t: this.wait_list){
+			 System.out.println("Item: "+ t.getItem().getId()+ " Transacao: "+ t.getT().Id + " Tipo: " + t.getTypeL());
+		 }
+		 System.out.println("---------------||---------------"); 
+	}
+	
 }
