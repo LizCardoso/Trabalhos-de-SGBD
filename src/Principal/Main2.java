@@ -3,7 +3,10 @@ package Principal;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import GerenciadorBloqueio.Lock_Manager;
+
 import estruturas.Aresta;
+import estruturas.Item;
 import estruturas.Transacao;
 import estruturas.Vertice;
 
@@ -44,6 +47,14 @@ public static int operacoes(){
 	
 }
 
+public static Transacao buscarTrans(int id, ArrayList<Transacao> lista){
+	for (Transacao t: lista){
+		if(t.getId()==id)
+			return t;
+	}
+	return null;
+}
+
 	public static void main(String[] args) {
 		int iteracao = 0, //loop do menu principal
 			//criacao = 0, 
@@ -51,18 +62,19 @@ public static int operacoes(){
 			operacao, //recebe a operacao a ser realizada
 			tranOpc,
 			TS = 0;
-
-
+		
+		Lock_Manager lock = null;
+		
 		String historia;
 		String[] comandos;
 		Scanner hist = new Scanner(System.in);
 		
 		
 		ArrayList<Transacao> transacoes = new ArrayList<Transacao>();
-		
+		ArrayList<Item> itens = new ArrayList<Item>();
 		Scanner opc = new Scanner(System.in);
 		
-
+		
 		
 		//grafo 
 		Vertice TR_Iniciada = new Vertice("TR_Iniciada");
@@ -98,23 +110,32 @@ public static int operacoes(){
 			indice = comando.indexOf("(");
 			int id;
 			start = comando.charAt(0);
+			Lock_Manager lock2 = lock;
 			switch(start){
 			case 'b':
 				id = Integer.parseInt(comando.substring(indice+1));
+				transacoes.add(new Transacao(id, TR_Iniciada, TS++));
 				break;
 				
 			case 'r':
 				id = Integer.parseInt(comando.substring(1, indice)); 
 				String item = comando.substring(indice+1);
+				Transacao transacao = buscarTrans(id, transacoes);
+				itens.add(new Item(item));
+				lock2.Ls(transacao, itens.get(itens.size()));
 				break;
 			
 			case 'w':
 				id = Integer.parseInt(comando.substring(1, indice));
 				item = comando.substring(indice+1);
+				transacao = buscarTrans(id, transacoes);
+				itens.add(new Item(item));
+				lock2.Lx(transacao, itens.get(itens.size()));
 				break;
 				
 			case 'c':
 				id = Integer.parseInt(comando.substring(indice+1)); 
+				
 				break;
 			
 			default:

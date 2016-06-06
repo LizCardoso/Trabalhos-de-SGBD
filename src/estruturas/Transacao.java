@@ -11,8 +11,8 @@ public class Transacao {
 	public Transacao( int id, Vertice v, int TS){
 		this.Id = id;
 		this.estado = "TR_Iniciada";
-		v.transacaoList.add(this);
 		this.TS = TS;
+		v.transacaoList.add(this);
 	}
 	
 	
