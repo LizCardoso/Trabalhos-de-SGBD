@@ -52,6 +52,11 @@ public static int operacoes(){
 			tranOpc,
 			TS = 0;
 
+
+		String historia;
+		String[] comandos;
+		Scanner hist = new Scanner(System.in);
+		
 		
 		ArrayList<Transacao> transacoes = new ArrayList<Transacao>();
 		
@@ -77,8 +82,55 @@ public static int operacoes(){
 		Aresta TR_Finish1 = new Aresta(Processo_Cancelamento, TR_Finalizada);
 		Aresta TR_Finish2 = new Aresta(Efetivada, TR_Finalizada);
 
-
-		//movimentando o grafo
+		//testes para o trabalho 3
+		System.out.println("Entre a história a ser executada");
+		historia=hist.next();
+		historia = historia.toLowerCase(); // para tratar todos os comando mais facilmente
+		comandos= historia.split("\\)");
+		
+		int indice;
+		char start;
+		//indice = comandos[0].indexOf("("); //identifica a posição do caractere '(' no comando, para podermos encontrar as outras informações
+		//System.out.println(comandos[0].charAt(indice+1)); //exibe o numero da transação a ser criada
+		
+		
+		for(String comando: historia.split("\\)")){
+			indice = comando.indexOf("(");
+			int id;
+			start = comando.charAt(0);
+			switch(start){
+			case 'b':
+				id = Integer.parseInt(comando.substring(indice+1));
+				break;
+				
+			case 'r':
+				id = Integer.parseInt(comando.substring(1, indice)); 
+				String item = comando.substring(indice+1);
+				break;
+			
+			case 'w':
+				id = Integer.parseInt(comando.substring(1, indice));
+				item = comando.substring(indice+1);
+				break;
+				
+			case 'c':
+				id = Integer.parseInt(comando.substring(indice+1)); 
+				break;
+			
+			default:
+				System.out.println("Erro de comando");
+				break;
+			}
+			
+		}
+		
+		
+		
+		hist.close();
+		
+		
+	/* Utilizado no tblho 2 
+	 *	//movimentando o grafo
 		
 		do{
 				listar(transacoes);
@@ -168,7 +220,7 @@ public static int operacoes(){
 				 break;
 				}
 				
-		}while(iteracao==0);
+		}while(iteracao==0);*/
 	}
 
 }
